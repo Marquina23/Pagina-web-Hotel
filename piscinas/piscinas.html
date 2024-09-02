@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Index.css">
+    <title>Piscinas</title>
+    <style>
+        
+        body {
+            margin: 0;
+            display: flex;
+            height: 100%;
+            box-sizing: border-box;
+            text-align: justify;
+        }
+        .collage-container {
+            max-width: 100%;
+            text-align: center;
+            padding-left: 19%;
+        }
+
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .collage img {
+            width: 380px;
+            height: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #i{
+            width: 300px;
+        }
+        #m{
+            width: 300px;
+        }
+        #g{
+            width: 300px;
+        }
+
+        .para {
+            font-size: 18px;
+            line-height: 1.5;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+        }
+
+        h3{
+            color: #b68f61;  
+        }
+        p{
+            text-align: justify;
+        }
+
+        .boton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: rgb(179, 167, 167);
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    color: #333;
+    }
+
+    .boton:hover {
+    background-color: #B68F61;
+    }
+    .scrollToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #B68F61;
+        color: white;
+        text-align: center;
+        line-height: 1.5;
+        border-radius: 2px;
+        border-color: #FEA116;
+        font-size: 30px;
+        vertical-align: middle;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transform: scale(0);
+    }
+
+    .scrollToTop.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .zoom-image {
+            width: 100%;
+            height: auto;
+            animation: zoom 4s ease-in-out infinite;
+        }
+
+        @keyframes zoom {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+            <a href="../Index.html"><ion-icon name="business-sharp" id="cloud"></ion-icon></a>
+                <a href="../Index.html"><span>Inicio</span></a>
+            </div>
+    
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="inbox" href="../Habitaciones/Html/Habitaciones.html">
+                       <ion-icon name="home"></ion-icon>
+                        <span>Habitaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../servicios/servicios.html">
+                        <ion-icon name="call-sharp"></ion-icon>
+                        <span>Servicios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../areas/areas.html">
+                        <ion-icon name="grid"></ion-icon>
+                        <span>Areas recreativas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Eventos/eventos.html">
+                        <ion-icon name="heart-sharp"></ion-icon>
+                        <span>Eventos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../publicidad/publicidad.html">
+                        <ion-icon name="receipt"></ion-icon>
+                        <span>Ofertas Especiales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Reseñas/Reseñas.html">
+                        <ion-icon name="chatbubbles-sharp"></ion-icon>
+                        <span>Reseñas</span> 
+                    </a>
+                </li>
+                <li>
+                    <a href="../Chat/Chat.html">
+                        <ion-icon name="location-sharp"></ion-icon>
+                        <span>Ubicación</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Oscuro</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script> 
+        
+const cloud = document.getElementById("cloud");
+const barraLateral = document.querySelector(".barra-lateral");
+const spans = document.querySelectorAll("span");
+const palanca = document.querySelector(".switch");
+const circulo = document.querySelector(".circulo");
+const menu = document.querySelector(".menu");
+const main = document.querySelector("main");
+
+menu.addEventListener("click",()=>{
+    barraLateral.classList.toggle("max-barra-lateral");
+    if(barraLateral.classList.contains("max-barra-lateral")){
+        menu.children[0].style.display = "none";
+        menu.children[1].style.display = "block";
+    }
+    else{
+        menu.children[0].style.display = "block";
+        menu.children[1].style.display = "none";
+    }
+    if(window.innerWidth<=320){
+        barraLateral.classList.add("mini-barra-lateral");
+        main.classList.add("min-main");
+        spans.forEach((span)=>{
+            span.classList.add("oculto");
+        })
+    }
+});
+
+palanca.addEventListener("click",()=>{
+    let body = document.body;
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("");
+    circulo.classList.toggle("prendido");
+});
+
+cloud.addEventListener("click",()=>{
+    barraLateral.classList.toggle("mini-barra-lateral");
+    main.classList.toggle("min-main");
+    spans.forEach((span)=>{
+        span.classList.toggle("oculto");
+    });
+});
+    </script>
+
+
+    <div class="collage-container">
+        <div class="collage">
+            <div class="para">
+                <p>
+                    <h3>Disfruta de una experiencia refrescante con nuestras impresionantes piscinas.</h3><br>
+                    Nuestras exclusivas piscinas ofrecen un refugio perfecto para el descanso y la relajación. Rodeadas de impresionantes
+                    vistas panorámicas, cada una de nuestras piscinas ha sido diseñada para brindarte una experiencia única, sumérgete en las 
+                    aguas cristalinas y toma el sol en tu tiempo perfecto.
+                </p>
+                <img src="pis.jpg" id="i" class="zoom-image">
+                <img src="piscina1.jfif" class="zoom-image" id="m">
+                <img src="piscina2.webp" class="zoom-image" id="g">
+            </div>
+        </div>
+        <div class="collage">
+            <div class="para">
+                <p>
+                    <h3>Piscina de Relax y Spa.</h3><br>
+                    Rejuvenece tu cuerpo y mente en nuestra piscina de relax, diseñada para ofrecerte una experiencia de spa única.
+                    Con jets de hidromasaje y burbujeas relajantes, es el lugar perfecto para aliviar el estrés y disfrutar de un masaje natural.
+                    Acompañanos y deja que las tensiones se desvanezcan.
+                </p>
+            <img src="https://hips.hearstapps.com/hmg-prod/images/piscina-lujo-1526246819.jpg">
+        </div>
+        </div>
+
+        <div class="collage">
+            <div class="para">
+                <p>
+                    <h3>Piscina Infinity con Vista al Mar.</h3><br>
+                    Diviértete en nuestra deslumbrante piscina infinity, donde las aguas se funden con el horizonte del Pacífico.
+                    Disfruta de una experiencia sin igual mientras te relajas en un ambiente de lujo con vistas panorámicas al océano.
+                    Ideal para nadar y contemplar la belleza del atardecer en un entorno sereno y sofisticado.
+                </p>
+            <img src="https://zaharahomes.com/wp-content/uploads/Alquiler-chalet-piscina-privada-cerca-playa.jpg">
+        </div>
+        </div>
+
+        <div class="collage">
+            <div class="para">
+                <p>
+                    <h3>Piscina Familiar con Actividades.</h3><br>
+                    La piscina familiar es el corazón vibrante de nuestra zona de piscinas, equipada con áreas para niños y zonas de juegos acuáticos.
+                    Ideal para un día lleno de diversión, ofrece un ambiente seguro y animado para toda la familia. Disfruta de actividades recreativas
+                    mientras los más pequeños exploran y juegan en este entorno acogedor.
+                </p>
+            <img src="piscina.jpg">
+            
+        </div>
+        </div>
+    </div>
+
+    <!-- Botón de Flecha -->
+
+<div id="scrollToTop" class="scrollToTop">
+    &#8593;
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+var scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+});
+
+</script>
+</body>
+</html>
